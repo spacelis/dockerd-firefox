@@ -18,10 +18,11 @@ RUN useradd -m firefox && \
                                                 libfontconfig1 \
                                                 libxext-dev \
                                                 libxrender-dev \
-                                                libxtst-dev
-RUN apt-get install -y --no-install-recommends  libxdamage1 libxcomposite1 libasound2 libdbus-glib-1-2
-RUN apt-get install -y --no-install-recommends  libgtk2.0-0
-RUN apt-get install -y --no-install-recommends  libxt6
+                                                chromium \
+                                                libxtst-dev \
+                                                libxdamage1 libxcomposite1 libasound2 libdbus-glib-1-2 \
+                                                libgtk2.0-0 \
+                                                libxt6
 RUN rm -rf /var/lib/apt/lists/*
 
 ADD entrypoint.sh /entrypoint.sh

@@ -14,5 +14,7 @@ fi
 if [ -d /home/firefox/.mozilla ]; then
   chown -R firefox:firefox /home/firefox/.mozilla
 fi
+chown -R firefox:firefox /dev/shm
 
-exec su -ls "/bin/bash" -c "/usr/bin/firefox -profile /home/firefox/.mozilla/firefox -setDefaultBrowser $ARGS $URL" firefox
+exec su -ls "/bin/bash" -c "$*" firefox
+# exec bash -c "$*"
