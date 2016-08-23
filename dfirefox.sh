@@ -7,7 +7,7 @@ docker run  -v $HOME/Downloads:/home/firefox/Downloads:rw \
             -e GID=$(id -g) \
             -e DISPLAY=unix$DISPLAY \
             -e URL=http://www.docker.com \
-            -e "EXTRA_HOSTS=$1" \
+            --add-host="$1" \
             --name firefox \
             --rm \
-            spacelis/firefox bash
+            spacelis/firefox
