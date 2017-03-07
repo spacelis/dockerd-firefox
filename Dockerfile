@@ -22,7 +22,9 @@ RUN useradd -m firefox && \
                                                 libxtst-dev \
                                                 libxdamage1 libxcomposite1 libasound2 libdbus-glib-1-2 \
                                                 libgtk2.0-0 \
-                                                libxt6
+                                                libxt6 \
+                                                libnss3-tools \
+                                                ca-certificates
 RUN rm -rf /var/lib/apt/lists/*
 
 ADD entrypoint.sh /entrypoint.sh
