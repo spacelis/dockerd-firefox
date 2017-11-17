@@ -1,6 +1,7 @@
 #!/bin/bash
 
-# ./dchrome.sh 'xxx.yyy.com' '192.168.0.x'
+# ./dchrome.sh 'xxx.yyy.com:192.168.0.x' Mock_CA.crt
+# ./dchrome.sh 'xxx.yyy.com:192.168.0.x'
 # ./dchrome.sh 'xxx.yyy.com'
 
 extra_resolv=
@@ -8,7 +9,7 @@ added_certs=
 url=
 while [ $# -gt 0 ]; do
   if [[ $1 =~ \.crt$ ]]; then
-    added_certs="$added_certs -v$(pwd)/$1:/usr/local/share/ca-certificates/extra/$(basename $1)"
+    added_certs="$added_certs -v$(pwd)/$1:/usr/local/share/ca-certificates/$(basename $1)"
   else
     extra_resolv="$extra_resolv --add-host=$1"
     url=$(cut -d: -f1 <<< $1)
@@ -32,4 +33,4 @@ docker run \
     $extra_resolv \
     --name chromium \
     --rm \
-    spacelis/firefox chromium --no-sandbox "'$url'"
+    spacelis/dbrowser chromium --no-sandbox "'$url'"
